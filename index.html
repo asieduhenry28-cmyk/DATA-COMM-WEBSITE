@@ -125,7 +125,7 @@
 
         <div class="topic-container">
 
-            <div class="card">
+            <div class="card" onclick="openModal('modal1')">
                 <i class="fa-solid fa-network-wired"></i>
                 <h3>Introduction to Data Communication</h3>
                 <p>
@@ -133,7 +133,7 @@
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('modal2')">
                 <i class="fa-solid fa-server"></i>
                 <h3>Networking Fundamentals</h3>
                 <p>
@@ -141,7 +141,7 @@
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('modal3')">
                 <i class="fa-solid fa-layer-group"></i>
                 <h3>OSI Reference Model</h3>
                 <p>
@@ -149,7 +149,7 @@
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('modal4')">
                 <i class="fa-solid fa-signal"></i>
                 <h3>Signals</h3>
                 <p>
@@ -157,7 +157,7 @@
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('modal5')">
                 <i class="fa-solid fa-wifi"></i>
                 <h3>Wireless Technologies</h3>
                 <p>
@@ -165,7 +165,7 @@
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card" onclick="openModal('modal6')">
                 <i class="fa-solid fa-shield-halved"></i>
                 <h3>Cybersecurity</h3>
                 <p>
@@ -177,6 +177,353 @@
 
     </section>
 
+    <!-- MODALS FOR DETAILED EXPLANATIONS -->
+
+    <!-- Modal 1: Introduction to Data Communication -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Introduction to Data Communication</h2>
+            <div class="modal-body">
+                <h4>What is Data Communication?</h4>
+                <p>
+                    Data communication is the exchange of data between two devices via some form of transmission medium. It involves the transfer of information in the form of digital signals or electromagnetic waves over various transmission media such as copper wires, fiber optic cables, or wireless channels.
+                </p>
+
+                <h4>Key Components of Data Communication</h4>
+                <ul>
+                    <li><strong>Sender:</strong> The device that initiates the communication and sends data</li>
+                    <li><strong>Receiver:</strong> The device that receives the transmitted data</li>
+                    <li><strong>Transmission Medium:</strong> The physical path through which data travels (cable, fiber, air, etc.)</li>
+                    <li><strong>Protocol:</strong> A set of rules governing the communication process</li>
+                    <li><strong>Message:</strong> The data being transmitted from sender to receiver</li>
+                </ul>
+
+                <h4>Characteristics of Effective Data Communication</h4>
+                <p>
+                    For data communication to be effective, it must be:
+                </p>
+                <ul>
+                    <li><strong>Accurate:</strong> The data must arrive without errors or corruption</li>
+                    <li><strong>Timely:</strong> Data must be delivered within an acceptable time frame</li>
+                    <li><strong>Fast:</strong> The transmission speed must meet the requirements of the application</li>
+                    <li><strong>Secure:</strong> The data must be protected from unauthorized access or tampering</li>
+                </ul>
+
+                <h4>Real-World Applications</h4>
+                <p>
+                    Data communication is everywhere in modern life: email systems, instant messaging, video conferencing, online banking, file sharing, cloud storage, IoT devices, and countless other applications rely on data communication principles. Every time you send a text message, watch a video online, or access a website, data communication is happening behind the scenes.
+                </p>
+
+                <h4>Significance in Computing</h4>
+                <p>
+                    Understanding data communication is fundamental to modern computing. It enables connectivity, resource sharing, and information exchange that forms the backbone of the digital world. Without proper data communication principles, the internet and modern computing infrastructure would not function.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Networking Fundamentals -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Networking Fundamentals</h2>
+            <div class="modal-body">
+                <h4>What is a Computer Network?</h4>
+                <p>
+                    A computer network is a collection of interconnected computers and devices that share resources and exchange information. Networks allow computers to communicate with each other, share data, printers, internet connectivity, and other resources. From small local networks to the global Internet, networking is essential to modern computing.
+                </p>
+
+                <h4>Types of Networks</h4>
+                <ul>
+                    <li><strong>LAN (Local Area Network):</strong> Covers a small geographic area like an office, home, or school building. Fast, secure, and owned by the organization.</li>
+                    <li><strong>WAN (Wide Area Network):</strong> Covers large geographic areas using leased communication lines. The Internet is the largest WAN.</li>
+                    <li><strong>MAN (Metropolitan Area Network):</strong> Covers a city or large campus. Larger than LAN but smaller than WAN.</li>
+                    <li><strong>PAN (Personal Area Network):</strong> Very small networks, like Bluetooth connections between devices within a few meters.</li>
+                </ul>
+
+                <h4>Essential Network Devices</h4>
+                <ul>
+                    <li><strong>Router:</strong> Directs data packets between networks and connects LANs to WANs</li>
+                    <li><strong>Switch:</strong> Connects devices within a network and forwards data to the correct port</li>
+                    <li><strong>Hub:</strong> An older device that broadcasts data to all connected ports (less efficient than switches)</li>
+                    <li><strong>Modem:</strong> Modulates and demodulates signals to connect to internet service providers</li>
+                    <li><strong>Firewall:</strong> Protects networks by monitoring and controlling incoming and outgoing network traffic</li>
+                    <li><strong>Access Point:</strong> Enables wireless devices to connect to a wired network</li>
+                </ul>
+
+                <h4>Network Topologies</h4>
+                <p>
+                    Network topology refers to the arrangement of devices in a network:
+                </p>
+                <ul>
+                    <li><strong>Star:</strong> All devices connected to a central device (switch/hub). Easy to manage but single point of failure.</li>
+                    <li><strong>Bus:</strong> All devices connected to a central cable. Simple but prone to collisions.</li>
+                    <li><strong>Ring:</strong> Devices connected in a circle. Data passes through each device until it reaches its destination.</li>
+                    <li><strong>Mesh:</strong> Each device connected to multiple others. Highly redundant and reliable but expensive.</li>
+                    <li><strong>Hybrid:</strong> Combination of different topologies for flexibility and reliability.</li>
+                </ul>
+
+                <h4>Network Protocols and Standards</h4>
+                <p>
+                    Networks rely on protocols like TCP/IP (the Internet Protocol Suite), Ethernet (for physical connections), and WiFi (for wireless). These standardized protocols ensure that different devices from different manufacturers can communicate with each other reliably. Understanding these basics is crucial for anyone working with networks.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: OSI Reference Model -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>OSI Reference Model</h2>
+            <div class="modal-body">
+                <h4>Introduction to the OSI Model</h4>
+                <p>
+                    The Open Systems Interconnection (OSI) model is a conceptual framework that standardizes the functions of a telecommunication or computing system into seven abstraction layers. It was developed by the International Organization for Standardization (ISO) to improve interoperability between different systems and is fundamental to understanding how networks operate.
+                </p>
+
+                <h4>The Seven Layers of the OSI Model</h4>
+
+                <h5>Layer 7: Application Layer</h5>
+                <p>
+                    The topmost layer where users interact with the network. It provides services directly to user applications and includes protocols like HTTP, HTTPS, FTP, SMTP, POP3, Telnet, and DNS. Email clients, web browsers, and file transfer applications operate at this layer.
+                </p>
+
+                <h5>Layer 6: Presentation Layer</h5>
+                <p>
+                    Responsible for data formatting, encryption, and compression. It ensures data from the application layer is in a format that can be transmitted over the network. It handles encryption/decryption, data compression, and character code translation (ASCII, Unicode, etc.).
+                </p>
+
+                <h5>Layer 5: Session Layer</h5>
+                <p>
+                    Manages communication sessions between applications. It establishes, maintains, and terminates connections. It handles dialogue control (determining who speaks when) and synchronization of data exchange. Examples include NetBIOS and PPTP protocols.
+                </p>
+
+                <h5>Layer 4: Transport Layer</h5>
+                <p>
+                    Provides end-to-end communication services. The two main protocols are TCP (Transmission Control Protocol) for reliable, connection-oriented communication and UDP (User Datagram Protocol) for fast, connectionless communication. This layer ensures data is delivered correctly and in order.
+                </p>
+
+                <h5>Layer 3: Network Layer</h5>
+                <p>
+                    Handles routing and logical addressing (IP addresses). It determines the best path for data packets to travel from source to destination across multiple networks. IP (IPv4 and IPv6) operates at this layer, and routers are the primary devices working at this level.
+                </p>
+
+                <h5>Layer 2: Data Link Layer</h5>
+                <p>
+                    Responsible for physical addressing (MAC addresses) and reliable communication over a single link. It handles framing, error detection, and access to the physical medium. Switches and bridges work at this layer, and protocols include Ethernet and PPP (Point-to-Point Protocol).
+                </p>
+
+                <h5>Layer 1: Physical Layer</h5>
+                <p>
+                    The lowest layer dealing with the actual physical transmission of data over cables or wireless medium. It defines electrical signals, cable specifications, connector types, and transmission speeds. Hubs, cables, and modems operate at this layer.
+                </p>
+
+                <h4>Why the OSI Model Matters</h4>
+                <p>
+                    The OSI model provides a standardized way to think about network communication. It helps network professionals troubleshoot problems by isolating issues to specific layers, allows different vendors to create compatible products, and provides a common language for discussing network architecture and protocols. Understanding the OSI model is essential for network administration, cybersecurity, and software development.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Signals -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>Signals in Data Communication</h2>
+            <div class="modal-body">
+                <h4>What are Signals?</h4>
+                <p>
+                    A signal is a physical representation of data that can be transmitted over a medium. In data communication, signals carry information from a sender to a receiver. Understanding the nature of signals is crucial because all digital communication ultimately relies on converting data into signals that can be transmitted through various media.
+                </p>
+
+                <h4>Analog Signals</h4>
+                <p>
+                    Analog signals are continuous waveforms that can take any value within a range. They vary smoothly and continuously over time, resembling natural phenomena like sound waves or light waves. Key characteristics include:
+                </p>
+                <ul>
+                    <li><strong>Continuous:</strong> The signal can assume an infinite number of values</li>
+                    <li><strong>Natural:</strong> Most natural phenomena produce analog signals (voice, music, temperature)</li>
+                    <li><strong>Susceptible to Noise:</strong> Degradation and distortion are common issues</li>
+                    <li><strong>Traditional:</strong> Used in older telephone systems, AM/FM radio, and television broadcasting</li>
+                    <li><strong>Challenge:</strong> Difficult to store and process without loss of information</li>
+                </ul>
+
+                <h4>Digital Signals</h4>
+                <p>
+                    Digital signals are discrete signals that can only take specific values, typically represented as 1s and 0s (binary). They are the foundation of modern computing and communication. Key characteristics include:
+                </p>
+                <ul>
+                    <li><strong>Discrete:</strong> The signal has only definite values (usually two: 0 and 1)</li>
+                    <li><strong>Binary:</strong> Represented as sequences of bits (1s and 0s)</li>
+                    <li><strong>Robust:</strong> Less susceptible to noise and distortion</li>
+                    <li><strong>Modern:</strong> The foundation of all contemporary computing and internet communication</li>
+                    <li><strong>Reliable:</strong> Can be easily stored, processed, and reproduced without degradation</li>
+                </ul>
+
+                <h4>Signal Characteristics</h4>
+                <ul>
+                    <li><strong>Frequency:</strong> The number of complete cycles per second (Hertz). Higher frequencies can carry more data.</li>
+                    <li><strong>Amplitude:</strong> The maximum height of the signal wave. Determines signal strength and power.</li>
+                    <li><strong>Phase:</strong> The position of the signal wave at a given time. Important for signal synchronization.</li>
+                    <li><strong>Wavelength:</strong> The distance covered by one complete cycle. Inversely related to frequency.</li>
+                </ul>
+
+                <h4>Analog to Digital Conversion</h4>
+                <p>
+                    Since computers only understand digital signals, analog signals must be converted to digital format. This process involves:
+                </p>
+                <ul>
+                    <li><strong>Sampling:</strong> Taking measurements of the analog signal at regular intervals</li>
+                    <li><strong>Quantization:</strong> Converting each sample to the nearest digital value</li>
+                    <li><strong>Encoding:</strong> Representing the quantized values as binary numbers</li>
+                </ul>
+
+                <h4>Signal Transmission Media</h4>
+                <p>
+                    Different signals are suited to different transmission media. Copper wires carry electrical signals, fiber optic cables carry optical signals, and free space carries electromagnetic waves for wireless communication. The choice of medium affects signal quality, bandwidth, distance, and cost.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Wireless Technologies -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>Wireless Technologies</h2>
+            <div class="modal-body">
+                <h4>Introduction to Wireless Communication</h4>
+                <p>
+                    Wireless technologies enable communication without physical cables or wires. Instead, data is transmitted through radio waves, microwaves, infrared, or other electromagnetic signals. Wireless communication has revolutionized connectivity, making networks more flexible, mobile, and accessible. Today, wireless technology is everywhere—in smartphones, laptops, IoT devices, and countless other applications.
+                </p>
+
+                <h4>WiFi (Wireless Fidelity)</h4>
+                <p>
+                    WiFi is a wireless local area network (WLAN) technology based on the IEEE 802.11 standard. It provides high-speed internet access over relatively short distances (typically up to 100 meters indoors).
+                </p>
+                <ul>
+                    <li><strong>Standards:</strong> 802.11a, 802.11b, 802.11g, 802.11n (WiFi 4), 802.11ac (WiFi 5), 802.11ax (WiFi 6)</li>
+                    <li><strong>Frequency Bands:</strong> 2.4 GHz and 5 GHz (newer standards also use 6 GHz)</li>
+                    <li><strong>Advantages:</strong> Easy installation, cost-effective, high speeds, broad compatibility</li>
+                    <li><strong>Applications:</strong> Home networks, office networks, public hotspots, universities, coffee shops</li>
+                    <li><strong>Speed:</strong> Latest WiFi 6 can reach speeds up to 9.6 Gbps</li>
+                </ul>
+
+                <h4>Bluetooth</h4>
+                <p>
+                    Bluetooth is a wireless personal area network (WPAN) technology designed for short-range communication between devices. It operates in the 2.4 GHz frequency band with a typical range of 10-100 meters depending on the class.
+                </p>
+                <ul>
+                    <li><strong>Purpose:</strong> Connecting mobile devices, headphones, speakers, fitness trackers, and IoT devices</li>
+                    <li><strong>Versions:</strong> Bluetooth Classic for traditional connections and Bluetooth Low Energy (BLE) for battery-powered devices</li>
+                    <li><strong>Advantages:</strong> Low power consumption, simple pairing, widely supported</li>
+                    <li><strong>Speed:</strong> Bluetooth 5.0 and later support higher data rates</li>
+                    <li><strong>Security:</strong> Built-in encryption and authentication mechanisms</li>
+                </ul>
+
+                <h4>4G/LTE and 5G</h4>
+                <p>
+                    Cellular technologies provide wide-area wireless connectivity for mobile devices.
+                </p>
+                <ul>
+                    <li><strong>4G/LTE:</strong> Offers speeds up to 100 Mbps, significantly faster than 3G. The standard for modern smartphones and devices.</li>
+                    <li><strong>5G:</strong> Next-generation cellular technology promising speeds up to 10 Gbps, ultra-low latency, and massive device connectivity. Still being deployed globally.</li>
+                    <li><strong>Coverage:</strong> Covers large geographic areas through a network of cell towers</li>
+                    <li><strong>Mobility:</strong> Seamless handover between towers enables communication while moving</li>
+                </ul>
+
+                <h4>Other Wireless Technologies</h4>
+                <ul>
+                    <li><strong>WiMAX:</strong> Wireless technology for broadband access over longer distances (up to 50 km)</li>
+                    <li><strong>ZigBee:</strong> Low-power wireless technology for IoT and home automation</li>
+                    <li><strong>NFC (Near Field Communication):</strong> Ultra-short-range (up to 10 cm) wireless technology for mobile payments and data exchange</li>
+                    <li><strong>Infrared:</strong> Uses light waves for short-range communication (remote controls, older devices)</li>
+                    <li><strong>Satellite:</strong> Long-distance communication using satellites in orbit</li>
+                </ul>
+
+                <h4>Wireless Security Considerations</h4>
+                <p>
+                    Wireless networks require proper security measures because signals can be intercepted. Modern wireless technologies use encryption (WPA2, WPA3), authentication protocols, and access controls to protect data from unauthorized access and eavesdropping.
+                </p>
+
+                <h4>Future of Wireless</h4>
+                <p>
+                    The future of wireless includes emerging technologies like WiFi 6E and 7, advanced 5G and 6G research, improved battery technologies, and the continued expansion of the Internet of Things (IoT). Wireless technology will continue to evolve, enabling faster, more reliable, and more pervasive connectivity.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Cybersecurity -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal6')">&times;</span>
+            <h2>Cybersecurity</h2>
+            <div class="modal-body">
+                <h4>What is Cybersecurity?</h4>
+                <p>
+                    Cybersecurity is the practice of protecting computer systems, networks, and data from digital attacks, theft, and damage. With increasing digitalization and connectivity, cybersecurity has become critical for individuals, organizations, and governments. It involves technical measures, policies, and practices designed to safeguard information and maintain the integrity, confidentiality, and availability of systems and data.
+                </p>
+
+                <h4>Types of Cyber Threats</h4>
+                <ul>
+                    <li><strong>Malware:</strong> Malicious software including viruses, worms, trojans, and ransomware that infects systems and causes damage</li>
+                    <li><strong>Phishing:</strong> Fraudulent attempts to obtain sensitive information by disguising communications as trustworthy sources</li>
+                    <li><strong>DDoS Attacks:</strong> Distributed Denial of Service attacks that overwhelm systems with traffic to make them unavailable</li>
+                    <li><strong>Man-in-the-Middle (MITM):</strong> Attacks where an attacker intercepts communication between two parties</li>
+                    <li><strong>SQL Injection:</strong> Inserting malicious SQL code into applications to access or manipulate databases</li>
+                    <li><strong>Social Engineering:</strong> Manipulating people into divulging confidential information</li>
+                    <li><strong>Zero-Day Exploits:</strong> Attacks exploiting previously unknown vulnerabilities</li>
+                    <li><strong>Password Attacks:</strong> Brute force and dictionary attacks to crack passwords</li>
+                </ul>
+
+                <h4>Security Principles: CIA Triad</h4>
+                <ul>
+                    <li><strong>Confidentiality:</strong> Ensuring that information is only accessible to authorized individuals. Achieved through encryption and access controls.</li>
+                    <li><strong>Integrity:</strong> Ensuring that data is not altered or corrupted. Maintained through checksums, digital signatures, and monitoring.</li>
+                    <li><strong>Availability:</strong> Ensuring that systems and data are accessible when needed. Protected through redundancy, backups, and DDoS protection.</li>
+                </ul>
+
+                <h4>Security Measures and Protections</h4>
+                <ul>
+                    <li><strong>Firewalls:</strong> Monitor and control network traffic based on predefined rules to block unauthorized access</li>
+                    <li><strong>Encryption:</strong> Converting data into unreadable format using algorithms so only authorized parties can decrypt it</li>
+                    <li><strong>Authentication:</strong> Verifying user identity through passwords, biometrics, multi-factor authentication (MFA), or digital certificates</li>
+                    <li><strong>Antivirus/Antimalware:</strong> Software that detects and removes malicious programs</li>
+                    <li><strong>Intrusion Detection Systems (IDS):</strong> Monitor networks for suspicious activity and attacks</li>
+                    <li><strong>Virtual Private Networks (VPN):</strong> Create encrypted tunnels for secure data transmission over public networks</li>
+                    <li><strong>Access Control Lists (ACL):</strong> Define which users or systems can access specific resources</li>
+                </ul>
+
+                <h4>Network Security Best Practices</h4>
+                <ul>
+                    <li>Use strong, unique passwords and implement multi-factor authentication</li>
+                    <li>Keep systems and software updated with the latest security patches</li>
+                    <li>Use encryption for sensitive data both in transit and at rest</li>
+                    <li>Implement firewalls and intrusion detection systems</li>
+                    <li>Conduct regular security audits and vulnerability assessments</li>
+                    <li>Educate users about phishing and social engineering attacks</li>
+                    <li>Maintain regular backups of critical data</li>
+                    <li>Create and enforce security policies and procedures</li>
+                    <li>Monitor network traffic and system logs</li>
+                </ul>
+
+                <h4>Career in Cybersecurity</h4>
+                <p>
+                    Cybersecurity is one of the fastest-growing fields in IT. Professionals can specialize in areas like network security, application security, security analysis, ethical hacking (penetration testing), security architecture, and incident response. Certifications like CompTIA Security+, Certified Ethical Hacker (CEH), and Certified Information Systems Security Professional (CISSP) are highly valued in the industry.
+                </p>
+
+                <h4>Future of Cybersecurity</h4>
+                <p>
+                    As technology evolves, so do cyber threats. The future of cybersecurity includes artificial intelligence and machine learning for threat detection, zero-trust security models, quantum-resistant encryption, and increased focus on cloud security and IoT protection. Cybersecurity will remain a critical concern for individuals and organizations worldwide.
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- TELEGRAPH -->
     <section id="telegraph" class="telegraph">
 
@@ -186,7 +533,7 @@
 
         <div class="telegraph-container">
 
-            <img src="images/telegraph.jpg" alt="">
+            <canvas id="telegraphCanvas" width="500" height="350" style="border: 2px solid #333; background: #f9f9f9; border-radius: 8px;"></canvas>
 
             <div class="telegraph-text">
 
@@ -266,6 +613,144 @@
         </p>
 
     </footer>
+
+    <script>
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName("modal");
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target === modals[i]) {
+                    modals[i].style.display = "none";
+                    document.body.style.overflow = "auto";
+                }
+            }
+        }
+
+        // Telegraph Canvas Drawing
+        function drawTelegraph() {
+            const canvas = document.getElementById('telegraphCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Clear canvas
+            ctx.fillStyle = '#f9f9f9';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw telegraph structure
+            // Left side - Sender
+            ctx.fillStyle = '#333';
+            ctx.fillRect(30, 100, 80, 80);
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 12px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText('SENDER', 70, 140);
+            ctx.fillText('Telegraph', 70, 155);
+
+            // Right side - Receiver
+            ctx.fillStyle = '#333';
+            ctx.fillRect(390, 100, 80, 80);
+            ctx.fillStyle = '#fff';
+            ctx.fillText('RECEIVER', 430, 140);
+            ctx.fillText('Telegraph', 430, 155);
+
+            // Wire connecting sender to receiver
+            ctx.strokeStyle = '#d4af37';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(110, 130);
+            ctx.lineTo(390, 130);
+            ctx.stroke();
+
+            // Return wire
+            ctx.beginPath();
+            ctx.moveTo(110, 160);
+            ctx.lineTo(390, 160);
+            ctx.stroke();
+
+            // Morse code representation (dashes and dots)
+            ctx.strokeStyle = '#ff6b6b';
+            ctx.lineWidth = 2;
+            let xPos = 180;
+            
+            // Draw morse code pattern
+            const morsePatterns = [
+                {x: 180, type: 'dash'},
+                {x: 210, type: 'dot'},
+                {x: 235, type: 'dash'},
+                {x: 265, type: 'dash'},
+                {x: 295, type: 'dot'},
+                {x: 320, type: 'dash'}
+            ];
+
+            morsePatterns.forEach(pattern => {
+                if (pattern.type === 'dash') {
+                    ctx.beginPath();
+                    ctx.moveTo(pattern.x, 135);
+                    ctx.lineTo(pattern.x + 20, 135);
+                    ctx.stroke();
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(pattern.x + 5, 135, 2, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            });
+
+            // Add labels
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 14px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText('Telegraph System', 250, 40);
+
+            ctx.font = '11px Poppins';
+            ctx.fillText('Electrical Signal Transmission via Wire', 250, 300);
+
+            // Power source representation
+            ctx.fillStyle = '#ffd700';
+            ctx.fillRect(35, 220, 30, 30);
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 10px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText('+', 50, 237);
+
+            ctx.fillStyle = '#333';
+            ctx.font = '10px Poppins';
+            ctx.fillText('Power', 50, 260);
+
+            // Key/Switch representation
+            ctx.fillStyle = '#ddd';
+            ctx.fillRect(225, 220, 50, 30);
+            ctx.fillStyle = '#ff6b6b';
+            ctx.fillRect(230, 225, 40, 8);
+            ctx.fillStyle = '#333';
+            ctx.font = '10px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText('Key', 250, 260);
+
+            // Receiver sounder representation
+            ctx.beginPath();
+            ctx.arc(415, 235, 15, 0, Math.PI * 2);
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.fillStyle = '#333';
+            ctx.font = '10px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText('Sounder', 415, 260);
+        }
+
+        // Draw telegraph when page loads
+        window.addEventListener('load', drawTelegraph);
+    </script>
 
     <script src="js/script.js"></script>
 
