@@ -52,6 +52,124 @@ body {
 }
 
 /* ============================================
+   ANIMATED CODE BACKGROUND
+   ============================================ */
+.code-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.code-line {
+    position: absolute;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--primary);
+    white-space: nowrap;
+    opacity: 0;
+    font-weight: 500;
+}
+
+/* Individual code line animations */
+.code-line:nth-child(1) {
+    left: 5%;
+    animation: slideDown 25s linear infinite;
+    animation-delay: 0s;
+}
+
+.code-line:nth-child(2) {
+    left: 15%;
+    animation: slideDown 26s linear infinite;
+    animation-delay: 1s;
+    color: var(--accent);
+}
+
+.code-line:nth-child(3) {
+    left: 25%;
+    animation: slideDown 24s linear infinite;
+    animation-delay: 2s;
+}
+
+.code-line:nth-child(4) {
+    left: 35%;
+    animation: slideDown 27s linear infinite;
+    animation-delay: 3s;
+    color: var(--accent);
+}
+
+.code-line:nth-child(5) {
+    left: 45%;
+    animation: slideDown 23s linear infinite;
+    animation-delay: 4s;
+}
+
+.code-line:nth-child(6) {
+    left: 55%;
+    animation: slideDown 28s linear infinite;
+    animation-delay: 5s;
+    color: var(--accent);
+}
+
+.code-line:nth-child(7) {
+    left: 65%;
+    animation: slideDown 25s linear infinite;
+    animation-delay: 6s;
+}
+
+.code-line:nth-child(8) {
+    left: 75%;
+    animation: slideDown 26s linear infinite;
+    animation-delay: 7s;
+    color: var(--accent);
+}
+
+.code-line:nth-child(9) {
+    left: 85%;
+    animation: slideDown 24s linear infinite;
+    animation-delay: 8s;
+}
+
+.code-line:nth-child(10) {
+    left: 10%;
+    animation: slideDown 27s linear infinite;
+    animation-delay: 9s;
+    color: var(--accent);
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Hide code background on mobile */
+@media (max-width: 768px) {
+    .code-background {
+        display: none;
+    }
+}
+
+/* ============================================
    NAVIGATION
    ============================================ */
 .navbar {
@@ -136,6 +254,7 @@ body {
     position: relative;
     overflow: hidden;
     padding-top: 70px;
+    z-index: 10;
 }
 
 .hero::before {
@@ -350,6 +469,8 @@ body {
 .about-section {
     padding: 100px 0;
     background: var(--bg-white);
+    position: relative;
+    z-index: 10;
 }
 
 .about-grid {
@@ -495,6 +616,8 @@ body {
     padding: 80px 0;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--accent) 100%);
     color: white;
+    position: relative;
+    z-index: 10;
 }
 
 .inspiration-quote {
@@ -531,6 +654,8 @@ body {
 .topics-section {
     padding: 100px 0;
     background: var(--bg);
+    position: relative;
+    z-index: 10;
 }
 
 .topics-grid {
@@ -718,6 +843,8 @@ body {
 .telegraph-section {
     padding: 100px 0;
     background: var(--bg-white);
+    position: relative;
+    z-index: 10;
 }
 
 .telegraph-content {
@@ -837,6 +964,8 @@ body {
 .resources-section {
     padding: 100px 0;
     background: var(--bg);
+    position: relative;
+    z-index: 10;
 }
 
 .resources-grid {
@@ -961,6 +1090,8 @@ body {
 .assignments-section {
     padding: 100px 0;
     background: var(--bg-white);
+    position: relative;
+    z-index: 10;
 }
 
 .assignments-grid {
@@ -1030,6 +1161,8 @@ footer {
     color: white;
     padding: 40px 0;
     text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 footer p {
