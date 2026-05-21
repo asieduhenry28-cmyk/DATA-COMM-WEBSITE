@@ -54,20 +54,41 @@ body {
 .hero {
     min-height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 50px 8%;
-    background: linear-gradient(to right, #021b35, #0d3d66);
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.code-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(2, 27, 53, 0.9), rgba(13, 61, 102, 0.9));
+    z-index: 1;
+}
+
+#codeCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .hero-text {
-    flex: 1;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
 }
 
 .hero-text h1 {
     font-size: 60px;
     margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-text span {
@@ -77,6 +98,7 @@ body {
 .hero-text p {
     font-size: 18px;
     margin-bottom: 30px;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .btn {
@@ -545,9 +567,7 @@ footer {
 
 @media(max-width: 900px) {
 
-    .hero,
-    .about-container,
-    .telegraph-container {
+    .hero {
         flex-direction: column;
         text-align: center;
     }
@@ -559,6 +579,10 @@ footer {
     .hero-image img {
         width: 60%;
         margin-top: 20px;
+    }
+
+    .telegraph-container {
+        flex-direction: column;
     }
 
     .telegraph-text {
@@ -648,10 +672,6 @@ footer {
 
     .hero-text h1 {
         font-size: 28px;
-    }
-
-    .telegraph-container {
-        gap: 20px;
     }
 
     .modal-content {
