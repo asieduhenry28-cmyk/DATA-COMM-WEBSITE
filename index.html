@@ -371,12 +371,12 @@
                         <div class="file-item">
                             <i class="fas fa-file-pdf"></i>
                             <span>Assignment.pdf</span>
-                            <button class="read-btn" onclick="readFile('Assignment.pdf', 'Assignment.pdf')">
+                            <button class="read-btn" onclick="readFile('Assignment.pdf', 'assignment.pdf')">
                                 <i class="fas fa-eye"></i> Read
                             </button>
                         </div>
-                       
-                       
+                    </div>
+                </div>
 
                 <div class="assignment-card links-card">
                     <div class="assignment-icon">
@@ -474,23 +474,28 @@
         </div>
     </footer>
 
-    <!-- File Reader Modal -->
+    <!-- File Reader Modal with Close Button -->
     <div id="fileModal" class="modal file-modal">
-        <div class="modal-content">
+        <div class="modal-content file-modal-content">
             <div class="modal-header">
                 <h2 id="fileModalTitle">Reading Assignment</h2>
-                <button class="close-btn" onclick="closeFileModal()">
+                <button class="close-btn" onclick="closeFileModal()" title="Close">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body" id="fileModalBody">
                 <div class="file-preview">
                     <p class="file-name" id="previewFileName">Assignment.pdf</p>
-                    <iframe id="pdfViewer" class="pdf-viewer" src="Assignment.pdf" title="Assignment PDF"></iframe>
+                    <iframe id="pdfViewer" class="pdf-viewer" src="assignment.pdf" title="Assignment PDF"></iframe>
                     <p class="file-info">If the PDF does not show inside your browser, open it directly below.</p>
-                    <a href="#" class="btn btn-primary" id="openFileBtn" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Open Document
-                    </a>
+                    <div class="file-actions">
+                        <a href="#" class="btn btn-primary" id="openFileBtn" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Open Document
+                        </a>
+                        <button class="btn btn-secondary" onclick="closeFileModal()">
+                            <i class="fas fa-times"></i> Close
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
