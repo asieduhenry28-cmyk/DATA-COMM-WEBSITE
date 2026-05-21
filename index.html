@@ -369,9 +369,9 @@
                     <p>View and read your uploaded assignments</p>
                     <div class="file-list" id="fileList">
                         <div class="file-item">
-                            <i class="fas fa-file-pdf"></i>
-                            <span>Assignment.pdf</span>
-                            <button class="read-btn" onclick="readFile('Assignment.pdf', 'assignment.pdf')">
+                            <i class="fas fa-file-word"></i>
+                            <span>DATA COMMUNICATION ASSINGMENT..docx</span>
+                            <button class="read-btn" onclick="readFile('DATA COMMUNICATION ASSINGMENT', 'DATA%20COMMUNICATION%20ASSINGMENT..docx')">
                                 <i class="fas fa-eye"></i> Read
                             </button>
                         </div>
@@ -485,12 +485,14 @@
             </div>
             <div class="modal-body" id="fileModalBody">
                 <div class="file-preview">
-                    <p class="file-name" id="previewFileName">Assignment.pdf</p>
-                    <iframe id="pdfViewer" class="pdf-viewer" src="assignment.pdf" title="Assignment PDF"></iframe>
-                    <p class="file-info">If the PDF does not show inside your browser, open it directly below.</p>
+                    <p class="file-name" id="previewFileName">Document</p>
+                    <div id="docViewer" class="doc-viewer">
+                        <iframe id="docFrame" class="doc-frame"></iframe>
+                    </div>
+                    <p class="file-info">If the document does not display above, you can download it using the button below to view it on your device.</p>
                     <div class="file-actions">
-                        <a href="#" class="btn btn-primary" id="openFileBtn" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Open Document
+                        <a href="#" class="btn btn-primary" id="downloadFileBtn" download>
+                            <i class="fas fa-download"></i> Download Document
                         </a>
                         <button class="btn btn-secondary" onclick="closeFileModal()">
                             <i class="fas fa-times"></i> Close
