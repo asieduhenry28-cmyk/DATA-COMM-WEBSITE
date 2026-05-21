@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer - Assignment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #525659;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+        .viewer-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .toolbar {
+            background: #3b3e42;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+        .toolbar a {
+            color: white;
+            text-decoration: none;
+            background: #5a5f66;
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+        .toolbar a:hover {
+            background: #6c737c;
+        }
+        .toolbar .file-name {
+            margin-left: auto;
+            font-family: monospace;
+            background: #2c2e33;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+        .pdf-viewer {
+            flex: 1;
+            width: 100%;
+            background: #2b2d30;
+        }
+        embed, iframe, object {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .fallback-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            background: #2b2d30;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="viewer-container">
+    <div class="toolbar">
+        <a href="#" id="downloadBtn" download>
+            <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+        <a href="javascript:window.print()">
+            <i class="fa-solid fa-print"></i> Print
+        </a>
+        <span class="file-name" id="fileNameDisplay">DATA_COMMUNICATION_ASSIGNMENT.pdf</span>
+    </div>
+    <div class="pdf-viewer" id="pdfViewer">
+        <!-- We'll use embed as primary because it's widely supported -->
+        <embed id="pdfEmbed" src="" type="application/pdf" />
+    </div>
+</div>
+
+<!-- Font Awesome for icons (optional, but referenced in toolbar) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<script>
+    // Determine PDF source: either from URL parameter 'pdf' or default to local file
+    function getPDFSource() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let pdfParam = urlParams.get('pdf');
+        if (pdfParam) {
+            // decode and ensure relative path safety (basic)
+            return decodeURIComponent(pdfParam);
+        }
+        // Default PDF file name - adjust if necessary (same directory as viewer.html)
+        return 'DATA_COMMUNICATION_ASSIGNMENT.pdf';
+    }
+
+    const pdfSrc = '../DATA_COMMUNICATION_ASSIGNMENT.pdf'
+    const embedElement = document.getElementById('pdfEmbed');
+    const fileNameSpan = document.getElementById('fileNameDisplay');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    // Extract filename for display and download
+    let displayName = pdfSrc.split('/').pop();
+    fileNameSpan.textContent = displayName || 'PDF Document';
+
+    // Set embed source
+    embedElement.src = pdfSrc;
+
+    // Update download link
+    downloadBtn.href = pdfSrc;
+    downloadBtn.setAttribute('download', displayName);
+
+    // Optional: detect if embed fails to load PDF (network error or missing file)
+    // because embed does not directly provide onerror for PDF content, but we can try to detect via timeout or use object.
+    // Enhancement: listen for error on embed element, but embed's 'error' event is tricky for missing PDF.
+    // As a fallback, we can create an iframe also to ensure cross-browser. But embed works for most.
+    // For better reliability, we can also try to replace with iframe if embed fails after a few seconds.
+    // Simple approach: handle missing PDF by showing friendly message.
+    function handlePDFLoadError() {
+        const container = document.getElementById('pdfViewer');
+        container.innerHTML = `
+            <div class="fallback-message" style="display:flex; height:100%;">
+                <div>
+                    <i class="fa-solid fa-file-pdf" style="font-size:48px; margin-bottom:16px; display:block;"></i>
+                    <h3>Unable to load PDF</h3>
+                    <p>The file "${displayName}" could not be found or accessed.</p>
+                    <p>Make sure the PDF file exists in the same folder as this viewer page.</p>
+                    <a href="${pdfSrc}" target="_blank" style="color:#0a84ff;">Open PDF directly</a>
+                </div>
+            </div>
+        `;
+    }
+
+    // Since embed doesn't reliably fire error, we add a window load check to see if embed content loaded.
+    // Some browsers show blank if PDF not loaded. Simpler: test if the embed has loaded document by checking its content? Complex.
+    // I'll implement a fetch check to see if PDF is reachable, but due to CORS? It's same-origin, fine.
+    fetch(pdfSrc, { method: 'HEAD' })
+        .then(response => {
+            if (!response.ok) {
+                handlePDFLoadError();
+            } else {
+                const contentType = response.headers.get('Content-Type');
+                if (contentType && !contentType.includes('pdf')) {
+                    console.warn('File is not PDF?', contentType);
+                }
+            }
+        })
+        .catch(() => {
+            handlePDFLoadError();
+        });
+</script>
+</body>
+</html>
