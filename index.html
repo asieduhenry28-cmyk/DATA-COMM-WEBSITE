@@ -528,15 +528,68 @@
     <section id="telegraph" class="telegraph">
 
         <div class="section-title">
-            <h2>Telegraph Diagram</h2>
+            <h2>Telegraph Diagram & Morse Code Generator</h2>
         </div>
 
         <div class="telegraph-container">
 
-            <canvas id="telegraphCanvas" width="500" height="350" style="border: 2px solid #333; background: #f9f9f9; border-radius: 8px;"></canvas>
+            <div class="telegraph-box">
+                <h3>Interactive Telegraph Morse Code Generator</h3>
+                
+                <div class="morse-input-section">
+                    <label for="textInput">Enter text to convert to Morse code:</label>
+                    <input type="text" id="textInput" placeholder="Type your message here..." maxlength="50">
+                    <button onclick="convertToMorse()">Generate Morse Code</button>
+                    <button onclick="playMorse()" style="background-color: #0d3d66;">Play Sound</button>
+                    <button onclick="clearMorse()" style="background-color: #666;">Clear</button>
+                </div>
+
+                <div class="morse-output-section">
+                    <h4>Morse Code Output:</h4>
+                    <div id="morseOutput" class="morse-output">
+                        Enter text and click "Generate Morse Code"
+                    </div>
+                </div>
+
+                <div class="telegraph-visual">
+                    <h4>Telegraph Wire Visualization:</h4>
+                    <canvas id="telegraphCanvas" width="100%" height="200" style="border: 2px solid #333; background: #f0f0f0; border-radius: 8px;"></canvas>
+                </div>
+
+                <div class="morse-reference">
+                    <h4>Morse Code Reference:</h4>
+                    <div class="morse-table">
+                        <div class="morse-item"><strong>A</strong>: ·−</div>
+                        <div class="morse-item"><strong>B</strong>: −···</div>
+                        <div class="morse-item"><strong>C</strong>: −·−·</div>
+                        <div class="morse-item"><strong>D</strong>: −··</div>
+                        <div class="morse-item"><strong>E</strong>: ·</div>
+                        <div class="morse-item"><strong>F</strong>: ··−·</div>
+                        <div class="morse-item"><strong>G</strong>: −−·</div>
+                        <div class="morse-item"><strong>H</strong>: ····</div>
+                        <div class="morse-item"><strong>I</strong>: ··</div>
+                        <div class="morse-item"><strong>J</strong>: ·−−−</div>
+                        <div class="morse-item"><strong>K</strong>: −·−</div>
+                        <div class="morse-item"><strong>L</strong>: ·−··</div>
+                        <div class="morse-item"><strong>M</strong>: −−</div>
+                        <div class="morse-item"><strong>N</strong>: −·</div>
+                        <div class="morse-item"><strong>O</strong>: −−−</div>
+                        <div class="morse-item"><strong>P</strong>: ·−−·</div>
+                        <div class="morse-item"><strong>Q</strong>: −−·−</div>
+                        <div class="morse-item"><strong>R</strong>: ·−·</div>
+                        <div class="morse-item"><strong>S</strong>: ···</div>
+                        <div class="morse-item"><strong>T</strong>: −</div>
+                        <div class="morse-item"><strong>U</strong>: ··−</div>
+                        <div class="morse-item"><strong>V</strong>: ···−</div>
+                        <div class="morse-item"><strong>W</strong>: ·−−</div>
+                        <div class="morse-item"><strong>X</strong>: −··−</div>
+                        <div class="morse-item"><strong>Y</strong>: −·−−</div>
+                        <div class="morse-item"><strong>Z</strong>: −−··</div>
+                    </div>
+                </div>
+            </div>
 
             <div class="telegraph-text">
-
                 <h3>How I Understand Telegraph as a Layman</h3>
 
                 <p>
@@ -549,6 +602,23 @@
                     Instead of internet messages, it used electrical pulses and Morse code.
                 </p>
 
+                <h4>How Telegraph Works:</h4>
+                <ul>
+                    <li><strong>Message Conversion:</strong> Words are converted to Morse code (dots and dashes)</li>
+                    <li><strong>Electrical Signals:</strong> Each dot and dash becomes a short or long electrical pulse</li>
+                    <li><strong>Wire Transmission:</strong> Signals travel through copper wires to the receiving station</li>
+                    <li><strong>Sound Output:</strong> The receiver converts electrical pulses back into clicking sounds</li>
+                    <li><strong>Decoding:</strong> Trained operators listen and decode the Morse code back to words</li>
+                </ul>
+
+                <h4>Key Facts About Telegraph:</h4>
+                <ul>
+                    <li>Invented by Samuel Morse in the 1830s</li>
+                    <li>Used Morse code as the communication language</li>
+                    <li>Could transmit messages across continents quickly</li>
+                    <li>Revolutionized long-distance communication</li>
+                    <li>Paved the way for modern telecommunications</li>
+                </ul>
             </div>
 
         </div>
@@ -615,6 +685,152 @@
     </footer>
 
     <script>
+        // Morse Code Dictionary
+        const morseCode = {
+            'A': '·−', 'B': '−···', 'C': '−·−·', 'D': '−··', 'E': '·',
+            'F': '··−·', 'G': '−−·', 'H': '····', 'I': '··', 'J': '·−−−',
+            'K': '−·−', 'L': '·−··', 'M': '−−', 'N': '−·', 'O': '−−−',
+            'P': '·−−·', 'Q': '−−·−', 'R': '·−·', 'S': '···', 'T': '−',
+            'U': '··−', 'V': '···−', 'W': '·−−', 'X': '−··−', 'Y': '−·−−',
+            'Z': '−−··', '0': '−−−−−', '1': '·−−−−', '2': '··−−−',
+            '3': '···−−', '4': '····−', '5': '·····', '6': '−····',
+            '7': '−−···', '8': '−−−··', '9': '−−−−·', '.': '·−·−·−',
+            ',': '−−··−−', '?': '··−−··', "'": '·−−−−', '!': '−·−·−−',
+            '/': '−··−·', '(': '−·−−·', ')': '−·−−·−', '&': '·−···',
+            ':': '−−−···', ';': '−·−·−·', '=': '−···−', '+': '·−·−·',
+            '-': '−····−', '_': '··−−·−', '"': '·−··−·', '$': '···−··−',
+            '@': '·−−·−·', ' ': '/'
+        };
+
+        let currentMorse = '';
+
+        function convertToMorse() {
+            const input = document.getElementById('textInput').value.toUpperCase();
+            if (!input) {
+                alert('Please enter some text!');
+                return;
+            }
+
+            let morse = '';
+            for (let char of input) {
+                if (morseCode[char]) {
+                    morse += morseCode[char] + ' ';
+                } else {
+                    morse += '? ';
+                }
+            }
+            
+            currentMorse = morse.trim();
+            document.getElementById('morseOutput').innerHTML = `<strong>${input}</strong><br><br>${currentMorse}`;
+            drawTelegraphSignal(morse);
+        }
+
+        function drawTelegraphSignal(morse) {
+            const canvas = document.getElementById('telegraphCanvas');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            // Clear canvas
+            ctx.fillStyle = '#f0f0f0';
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw baseline
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, height / 2);
+            ctx.lineTo(width, height / 2);
+            ctx.stroke();
+
+            // Draw telegraph signals
+            const signals = morse.split(' ');
+            let xPos = 20;
+            const maxSignalWidth = (width - 40) / signals.length;
+
+            signals.forEach((signal) => {
+                if (signal === '/') {
+                    // Space between words
+                    xPos += maxSignalWidth * 0.3;
+                } else {
+                    for (let i = 0; i < signal.length; i++) {
+                        if (signal[i] === '·') {
+                            // Dot (short pulse)
+                            ctx.fillStyle = '#ff6b6b';
+                            ctx.fillRect(xPos, height / 2 - 15, 8, 30);
+                            xPos += 12;
+                        } else if (signal[i] === '−') {
+                            // Dash (long pulse)
+                            ctx.fillStyle = '#ff6b6b';
+                            ctx.fillRect(xPos, height / 2 - 15, 20, 30);
+                            xPos += 24;
+                        }
+                    }
+                    xPos += 12;
+                }
+            });
+        }
+
+        function playMorse() {
+            if (!currentMorse) {
+                alert('Please generate Morse code first!');
+                return;
+            }
+
+            // Create audio context
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const dotDuration = 0.1; // 100ms dot
+            const dashDuration = 0.3; // 300ms dash
+            const gapDuration = 0.1;
+            const charGapDuration = 0.3;
+            
+            let currentTime = audioContext.currentTime;
+
+            const signals = currentMorse.split(' ');
+            signals.forEach((signal) => {
+                for (let i = 0; i < signal.length; i++) {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = 800; // 800 Hz tone
+                    
+                    if (signal[i] === '·') {
+                        gain.gain.setValueAtTime(0.5, currentTime);
+                        gain.gain.setValueAtTime(0, currentTime + dotDuration);
+                        osc.start(currentTime);
+                        osc.stop(currentTime + dotDuration);
+                        currentTime += dotDuration + gapDuration;
+                    } else if (signal[i] === '−') {
+                        gain.gain.setValueAtTime(0.5, currentTime);
+                        gain.gain.setValueAtTime(0, currentTime + dashDuration);
+                        osc.start(currentTime);
+                        osc.stop(currentTime + dashDuration);
+                        currentTime += dashDuration + gapDuration;
+                    }
+                }
+                currentTime += charGapDuration;
+            });
+        }
+
+        function clearMorse() {
+            document.getElementById('textInput').value = '';
+            document.getElementById('morseOutput').innerHTML = 'Enter text and click "Generate Morse Code"';
+            currentMorse = '';
+            
+            const canvas = document.getElementById('telegraphCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#f0f0f0';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height / 2);
+            ctx.lineTo(canvas.width, canvas.height / 2);
+            ctx.stroke();
+        }
+
         // Modal Functions
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
@@ -637,119 +853,17 @@
             }
         }
 
-        // Telegraph Canvas Drawing
-        function drawTelegraph() {
+        // Initialize baseline on load
+        window.addEventListener('load', () => {
             const canvas = document.getElementById('telegraphCanvas');
             const ctx = canvas.getContext('2d');
-
-            // Clear canvas
-            ctx.fillStyle = '#f9f9f9';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Draw telegraph structure
-            // Left side - Sender
-            ctx.fillStyle = '#333';
-            ctx.fillRect(30, 100, 80, 80);
-            ctx.fillStyle = '#fff';
-            ctx.font = 'bold 12px Poppins';
-            ctx.textAlign = 'center';
-            ctx.fillText('SENDER', 70, 140);
-            ctx.fillText('Telegraph', 70, 155);
-
-            // Right side - Receiver
-            ctx.fillStyle = '#333';
-            ctx.fillRect(390, 100, 80, 80);
-            ctx.fillStyle = '#fff';
-            ctx.fillText('RECEIVER', 430, 140);
-            ctx.fillText('Telegraph', 430, 155);
-
-            // Wire connecting sender to receiver
-            ctx.strokeStyle = '#d4af37';
-            ctx.lineWidth = 4;
-            ctx.beginPath();
-            ctx.moveTo(110, 130);
-            ctx.lineTo(390, 130);
-            ctx.stroke();
-
-            // Return wire
-            ctx.beginPath();
-            ctx.moveTo(110, 160);
-            ctx.lineTo(390, 160);
-            ctx.stroke();
-
-            // Morse code representation (dashes and dots)
-            ctx.strokeStyle = '#ff6b6b';
-            ctx.lineWidth = 2;
-            let xPos = 180;
-            
-            // Draw morse code pattern
-            const morsePatterns = [
-                {x: 180, type: 'dash'},
-                {x: 210, type: 'dot'},
-                {x: 235, type: 'dash'},
-                {x: 265, type: 'dash'},
-                {x: 295, type: 'dot'},
-                {x: 320, type: 'dash'}
-            ];
-
-            morsePatterns.forEach(pattern => {
-                if (pattern.type === 'dash') {
-                    ctx.beginPath();
-                    ctx.moveTo(pattern.x, 135);
-                    ctx.lineTo(pattern.x + 20, 135);
-                    ctx.stroke();
-                } else {
-                    ctx.beginPath();
-                    ctx.arc(pattern.x + 5, 135, 2, 0, Math.PI * 2);
-                    ctx.stroke();
-                }
-            });
-
-            // Add labels
-            ctx.fillStyle = '#333';
-            ctx.font = 'bold 14px Poppins';
-            ctx.textAlign = 'center';
-            ctx.fillText('Telegraph System', 250, 40);
-
-            ctx.font = '11px Poppins';
-            ctx.fillText('Electrical Signal Transmission via Wire', 250, 300);
-
-            // Power source representation
-            ctx.fillStyle = '#ffd700';
-            ctx.fillRect(35, 220, 30, 30);
-            ctx.fillStyle = '#333';
-            ctx.font = 'bold 10px Poppins';
-            ctx.textAlign = 'center';
-            ctx.fillText('+', 50, 237);
-
-            ctx.fillStyle = '#333';
-            ctx.font = '10px Poppins';
-            ctx.fillText('Power', 50, 260);
-
-            // Key/Switch representation
-            ctx.fillStyle = '#ddd';
-            ctx.fillRect(225, 220, 50, 30);
-            ctx.fillStyle = '#ff6b6b';
-            ctx.fillRect(230, 225, 40, 8);
-            ctx.fillStyle = '#333';
-            ctx.font = '10px Poppins';
-            ctx.textAlign = 'center';
-            ctx.fillText('Key', 250, 260);
-
-            // Receiver sounder representation
-            ctx.beginPath();
-            ctx.arc(415, 235, 15, 0, Math.PI * 2);
             ctx.strokeStyle = '#333';
             ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height / 2);
+            ctx.lineTo(canvas.width, canvas.height / 2);
             ctx.stroke();
-            ctx.fillStyle = '#333';
-            ctx.font = '10px Poppins';
-            ctx.textAlign = 'center';
-            ctx.fillText('Sounder', 415, 260);
-        }
-
-        // Draw telegraph when page loads
-        window.addEventListener('load', drawTelegraph);
+        });
     </script>
 
     <script src="js/script.js"></script>
